@@ -12,9 +12,23 @@ function App() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check for ID in URL
+    // Check for data (base64) or ID in URL
     const params = new URLSearchParams(window.location.search);
+    const encoded = params.get('data');
     const id = params.get('id');
+
+    if (encoded) {
+      try {
+        const decoded = JSON.parse(atobURLSafe(encoded)) as AnalysisResult;
+        setData(decoded);
+        setStage('story');
+      } catch (e) {
+        console.error(e);
+        setError("Could not decode shared data.");
+        setStage('landing');
+      }
+      return;
+    }
 
     if (id) {
       setStage('loading');
@@ -65,6 +79,11 @@ function App() {
     setStage('landing');
     setData(null);
     setError(null);
+  };
+
+  const atobURLSafe = (value: string) => {
+    const normalized = value.replace(/-/g, '+').replace(/_/g, '/');
+    return atob(normalized);
   };
 
   return (
