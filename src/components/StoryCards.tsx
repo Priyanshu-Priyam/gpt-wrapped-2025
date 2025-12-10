@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { AnalysisResult } from '../utils/analysis';
-import { AlertTriangle, Clock, Terminal, Zap, Share2, Skull, Flame, Biohazard } from 'lucide-react';
-import { clsx } from 'clsx';
+import { Clock, Share2, Skull, Biohazard } from 'lucide-react';
 
 interface CardContentProps {
   data: AnalysisResult;
@@ -110,9 +109,16 @@ export const ObsessionCard: React.FC<CardContentProps> = ({ data }) => {
 // 4. GEN Z MBTI CARD (Replaces VibeCard)
 export const PersonalityCard: React.FC<CardContentProps> = ({ data }) => {
   const persona = data.persona || { 
-    genZArchetype: "NPC", 
-    genZDescription: "Loading personality...", 
-    title: "Unknown" 
+    title: "Unknown",
+    vibe: "",
+    redFlag: "",
+    archetype: "The Architect",
+    genZArchetype: "NPC",
+    genZDescription: "Loading personality...",
+    toxicTrait: "",
+    exposedSecret: "",
+    toxicityScore: 0,
+    contentDiet: "Brainrot"
   };
 
   return (

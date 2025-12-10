@@ -234,7 +234,7 @@ Create a persona that captures who they really are based on this data.`;
         max_tokens: 2048,
         temperature: 0.8,
         system: systemPrompt,
-        tools: [PERSONA_ANALYSIS_TOOL],
+        tools: [PERSONA_ANALYSIS_TOOL as any],
         tool_choice: { type: "tool", name: "generate_user_persona" },
         messages: [
           { role: "user", content: userMessage }
@@ -376,7 +376,7 @@ Create a persona that captures who they really are.`;
         max_tokens: 2048,
         temperature: 0.8,
         system: systemPrompt,
-        tools: [PERSONA_ANALYSIS_TOOL],
+        tools: [PERSONA_ANALYSIS_TOOL as any],
         tool_choice: { type: "tool", name: "generate_user_persona" },
         messages: [
           { role: "user", content: userMessage }

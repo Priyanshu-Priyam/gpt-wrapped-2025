@@ -1,16 +1,15 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Download, Share2 } from 'lucide-react';
+import { Download } from 'lucide-react';
 import html2canvas from 'html2canvas';
 
 interface CardProps {
   children: React.ReactNode;
   onNext: () => void;
   onPrev: () => void;
-  colorTheme?: 'green' | 'pink' | 'white';
 }
 
-export const Card: React.FC<CardProps> = ({ children, onNext, onPrev, colorTheme = 'green' }) => {
+export const Card: React.FC<CardProps> = ({ children, onNext, onPrev }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = async (e: React.MouseEvent) => {
